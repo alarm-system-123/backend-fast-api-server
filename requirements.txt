@@ -5,8 +5,10 @@ astroid==4.0.4
 boto3==1.42.49
 botocore==1.42.49
 certifi==2026.1.4
+cfgv==3.5.0
 click==8.3.1
 dill==0.4.1
+distlib==0.4.0
 dnspython==2.8.0
 email-validator==2.3.0
 fastapi==0.128.8
@@ -14,11 +16,13 @@ fastapi-cli==0.0.21
 fastapi-cloud-cli==0.12.0
 fastapi-mqtt==2.2.0
 fastar==0.8.0
+filelock==3.24.0
 gmqtt==0.7.0
 h11==0.16.0
 httpcore==1.0.9
 httptools==0.7.1
 httpx==0.28.1
+identify==2.6.16
 idna==3.11
 isort==7.0.0
 Jinja2==3.1.6
@@ -27,7 +31,9 @@ markdown-it-py==4.0.0
 MarkupSafe==3.0.3
 mccabe==0.7.0
 mdurl==0.1.2
+nodeenv==1.10.0
 platformdirs==4.5.1
+pre_commit==4.5.1
 pydantic==2.12.5
 pydantic-extra-types==2.11.0
 pydantic-settings==2.13.0
@@ -54,5 +60,6 @@ typing_extensions==4.15.0
 urllib3==2.6.3
 uvicorn==0.40.0
 uvloop==0.22.1
+virtualenv==20.36.1
 watchfiles==1.1.1
 websockets==16.0
