@@ -1,6 +1,5 @@
 """Set system on arm"""
 from fastapi import APIRouter
-
 from app.mqtt import send_mqtt_command
 
 router = APIRouter(prefix="/api", tags=["System Control"])
