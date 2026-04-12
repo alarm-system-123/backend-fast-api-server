@@ -1,7 +1,6 @@
 """Set system on arm"""
 from fastapi import APIRouter, HTTPException, status
 from app.mqtt import send_mqtt_command
-from app.routers.groups import groups_db
 
 router = APIRouter(prefix="/system", tags=["System Control"])
 
@@ -52,35 +51,3 @@ async def partial_arm_system():
     """Partial arm, night schedule"""
     await send_mqtt_command("cmd", "partial")
     return {"status": "command_sent", "action": "partial"}
-
-@router.post("/arm/group/{group_id}")
-async def arm_group(group_id: int):
-    """Arm a specific logical group of sensors"""
-
-    if group_id not in groups_db:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Групу з ID {group_id} не знайдено."
-        )
-
-    group = groups_db[group_id]
-    sensor_list = group["sensors"]
-
-    if not sensor_list:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Група '{group['name']}' порожня. Додайте датчики перед постановкою на охорону."
-        )
-
-    await send_mqtt_command(
-        cmd="cmd",
-        action="arm_group",
-        active_sensors=sensor_list
-    )
-
-    return {
-        "status": "command_sent",
-        "action": "arm_group",
-        "group_name": group["name"],
-        "active_sensors": sensor_list
-    }
