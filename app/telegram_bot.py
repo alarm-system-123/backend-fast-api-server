@@ -8,6 +8,7 @@ from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, C
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from data.config import Config
+# pylint: disable=import-error
 
 BOT_TOKEN = f"{Config.BOT_TOKEN}"
 MONGO_URL = f"{Config.MONGO_URL}"
@@ -19,7 +20,7 @@ db = db_client.iot_security
 gateways_collection = db.gateways
 
 
-class SubscriptionFlow(StatesGroup):
+class SubscriptionFlow(StatesGroup): # pylint: disable=too-few-public-methods
     """Get information from telegram"""
     waiting_for_mac = State()
     waiting_for_password = State()

@@ -46,5 +46,5 @@ async def send_telegram_alarm(device_id: str, sensor_name: str):
                 response = await client.post(url, json=payload)
                 if response.status_code != 200:
                     print(f"❌ Помилка відправки для {chat_id}: {response.text}")
-            except Exception as e:
+            except Exception as e: # pylint: disable=broad-exception-caught
                 print(f"❌ Помилка з'єднання з Telegram: {e}")

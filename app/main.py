@@ -10,9 +10,8 @@ from app.routers import system, schedules, sensors, events
 from app.scheduler import start_scheduler, scheduler
 from app.web_socket.web_socket import ws_manager
 
-
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI):  # pylint: disable=redefined-outer-name,unused-argument
     """Lifespan context manager"""
     print("🚀 Запуск сервера...")
     await mqtt.connection()

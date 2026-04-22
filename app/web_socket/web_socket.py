@@ -33,7 +33,7 @@ class ConnectionManager:
             for connection in self.active_connections[device_id]:
                 try:
                     await connection.send_json(message)
-                except Exception: # pylint: disable=unused-variable
+                except Exception: # pylint: disable=road-exception-caught
                     pass
 
 ws_manager = ConnectionManager()
