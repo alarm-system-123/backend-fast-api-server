@@ -2,7 +2,7 @@
 from datetime import datetime
 import httpx
 from app.database import gateways_collection
-from app.telegram_bot import BOT_TOKEN
+from common.config import BOT_TOKEN
 
 BOT_TOKEN = f"{BOT_TOKEN}"
 

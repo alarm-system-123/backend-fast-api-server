@@ -1,9 +1,9 @@
 """Database connection and helpers"""
 from datetime import datetime, timezone
 from motor.motor_asyncio import AsyncIOMotorClient
-from app.data.config import Config
+from common.config import MONGO_URL
 
-MONGO_URL = f"{Config.MONGO_URL}"
+MONGO_URL = f"{MONGO_URL}"
 
 client = AsyncIOMotorClient(MONGO_URL)
 db = client.iot_security

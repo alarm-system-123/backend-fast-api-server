@@ -7,11 +7,11 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from data.config import Config
+from common.config import BOT_TOKEN, MONGO_URL
 # pylint: disable=import-error
 
-BOT_TOKEN = f"{Config.BOT_TOKEN}"
-MONGO_URL = f"{Config.MONGO_URL}"
+BOT_TOKEN = f"{BOT_TOKEN}"
+MONGO_URL = f"{MONGO_URL}"
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()

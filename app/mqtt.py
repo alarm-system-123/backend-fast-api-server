@@ -7,8 +7,15 @@ from fastapi_mqtt import FastMQTT, MQTTConfig
 from app.database import gateways_collection, log_event
 from app.notifications import send_telegram_alarm
 from app.web_socket.web_socket import ws_manager
+from common.config import MQTT_HOST, MQTT_USER, MQTT_PASSWORD
 
-mqtt_config = MQTTConfig(host="0.0.0.0", port=1883, keepalive=60)
+mqtt_config = MQTTConfig(
+    host=MQTT_HOST,
+    port=1883,
+    keepalive=60,
+    username=MQTT_USER,
+    password=MQTT_PASSWORD
+)
 mqtt = FastMQTT(config=mqtt_config)
 
 
@@ -70,7 +77,6 @@ async def handle_system_message(device_id: str, sub_system: str, topic_parts: li
         print(f"🔌 Зміна статусу шлюзу {device_id}: {data}")
         new_status = data.get("gateway_status", "offline")
 
-        # +++ ЛОГ: ХАБ ОНЛАЙН / ОФЛАЙН +++
         status_ua = "в мережі" if new_status == "online" else "втратив зв'язок з інтернетом"
         await log_event(
             device_id=device_id,
@@ -90,7 +96,7 @@ async def handle_system_message(device_id: str, sub_system: str, topic_parts: li
 
     elif sub_system == "mode" and len(topic_parts) == 4 and topic_parts[3] == "status":
         print(f"🛡 Зміна режиму охорони {device_id}: {data}")
-        new_mode = data.get("status")
+        new_mode = data.get("mode")
 
         mode_names = {"armed": "Повна охорона",
                       "disarmed": "Знято з охорони",

@@ -6,7 +6,7 @@ from starlette.websockets import WebSocket
 
 from app.database import get_system_state_for_device, get_sensors_for_device
 from app.mqtt import mqtt
-from app.routers import system, schedules, sensors, events
+from app.routers import system, schedules, sensors, events, health
 from app.scheduler import start_scheduler, scheduler
 from app.web_socket.web_socket import ws_manager
 
@@ -33,6 +33,7 @@ app.include_router(system.router)
 app.include_router(sensors.router)
 app.include_router(schedules.router)
 app.include_router(events.router)
+app.include_router(health.router)
 
 @app.websocket("/ws/state/{device_id}")
 async def websocket_endpoint(websocket: WebSocket, device_id: str):

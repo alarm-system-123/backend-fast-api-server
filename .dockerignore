@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Env
+.env
+venv/
+.venv/
+.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Docker
+docker-compose.yml
+# Tests
+tests/
+
